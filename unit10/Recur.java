@@ -65,7 +65,7 @@ public class Recur {
         // System.out.println(fun3(5));
 
         // Consider function f
-        // System.out.println(f(6));
+        // System.out.println(f(3));
 
         // Consider function has
         // System.out.println(has("hello"));
