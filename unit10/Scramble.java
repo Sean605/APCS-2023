@@ -1,6 +1,8 @@
 package unit10;
 
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Scramble {
 
@@ -74,16 +76,28 @@ public class Scramble {
     }
 
     /**
-     * TODO how does this function work?
+     * Shuffles a set of integers using the Fisher-Yates shuffle algorithm
      * 
      * @param arr array of integers to shuffle
      */
-    public static void shuffle(int arr[]) {
-        // TODO
+    public static void shuffle(ArrayList<Integer> arr) {
+        ArrayList<Integer> sortedArr = new ArrayList<>();
+        Random random = new Random();
+
+        while(arr.size() != 0){
+            int randomNum = random.nextInt(arr.size());
+
+            sortedArr.add(arr.get(randomNum));
+            arr.remove(randomNum);
+        }
+        for(int index = 0; index < sortedArr.size(); index++){
+            arr.add(sortedArr.get(index));
+        }
     }
 
     public static void main(String args[]) {
 
+        /*
         int[] arr1 = { 6, 5, 3, 1, 8, 7, 2, 4 };
         insertionSort(arr1);
         System.out.println("Insertion sorted: " + Arrays.toString(arr1));
@@ -91,9 +105,10 @@ public class Scramble {
         int[] arr2 = { 3, 7, 8, 5, 2, 1, 9, 5, 4 };
         selectionSort(arr2);
         System.out.println("Selection sorted: " + Arrays.toString(arr2));
+        */
 
-        shuffle(arr2);
-        System.out.println("And shuffled: " + Arrays.toString(arr2));
-
+        ArrayList<Integer> arr3 = new ArrayList<>(Arrays.asList(4, 5, 6, 9, 2, 4, 6, 9, 1));
+        shuffle(arr3);
+        System.out.println("And shuffled: " + arr3);
     }
 }
