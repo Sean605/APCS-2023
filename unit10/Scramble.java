@@ -57,19 +57,19 @@ public class Scramble {
      * 
      * @param arr array of integers to sort
      */
-    public static void selectionSort(int arr[]) {
+    public static void selectionSort(String arr[]) {
         int n = arr.length;
         // One by one move boundary of unsorted subarray
         for (int i = 0; i < n - 1; i++) {
             // Find the minimum element in unsorted array
             int min_idx = i;
             for (int j = i + 1; j < n; j++) {
-                if (arr[j] < arr[min_idx])
+                if (arr[j].compareTo(arr[min_idx]) <= 0)
                     min_idx = j;
             }
 
             // Swap the found minimum element with the first element
-            int temp = arr[min_idx];
+            String temp = arr[min_idx];
             arr[min_idx] = arr[i];
             arr[i] = temp;
         }
@@ -101,14 +101,16 @@ public class Scramble {
         int[] arr1 = { 6, 5, 3, 1, 8, 7, 2, 4 };
         insertionSort(arr1);
         System.out.println("Insertion sorted: " + Arrays.toString(arr1));
-
-        int[] arr2 = { 3, 7, 8, 5, 2, 1, 9, 5, 4 };
-        selectionSort(arr2);
-        System.out.println("Selection sorted: " + Arrays.toString(arr2));
         */
 
+        String[] arr2 = { "Three", "Seven", "Eight", "Five", "Two", "One", "Nine", "Five", "Four" };
+        selectionSort(arr2);
+        System.out.println("Selection sorted: " + Arrays.toString(arr2));
+        
+        /*
         ArrayList<Integer> arr3 = new ArrayList<>(Arrays.asList(4, 5, 6, 9, 2, 4, 6, 9, 1));
         shuffle(arr3);
         System.out.println("And shuffled: " + arr3);
+        */
     }
 }
