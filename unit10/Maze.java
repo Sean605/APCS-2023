@@ -15,8 +15,15 @@ public class Maze {
      * @param line the values to be placed in the maze.
      */
     public Maze(int rows, int cols, String line) {
-        // TODO part a
+        maze = new char[rows][cols];
+        solution = false;
+        int count = 0;
 
+        for(int row = 0; row < maze.length; row++){
+            for(int col = 0; col < maze[row].length; col++){
+                maze[row][col] = line.charAt(count++);
+            }
+        }
     }
 
     /**
@@ -53,8 +60,13 @@ public class Maze {
      * @param c current column index
      */
     private void check(int r, int c) {
-        // TODO part b
-
+        if(maze[r][c] != '#'){
+            if(maze[r][c] == '$'){
+                solution = true;
+            } else {
+                maze[r][c] = 'e';
+            }
+        }
     }
 
     /**
