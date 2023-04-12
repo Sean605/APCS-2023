@@ -54,11 +54,13 @@ public class FrogSimulation {
      * false otherwise.
      */
     public boolean simulate() {
-        for(int index = 0; index <= maxHops; index++){
-            goalDistance -= hopDistance();
+        int remainingDistance = goalDistance;
+
+        for(int index = 0; index < maxHops; index++){
+            remainingDistance -= hopDistance();
         }
 
-        if(goalDistance <= 0){
+        if(remainingDistance <= 0){
             return true;
         }
         return false;
