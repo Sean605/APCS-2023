@@ -27,7 +27,35 @@ class Book {
     // shown.
 }
 
-// TODO write class Textbook
+class Textbook extends Book{
+    
+    private int edition;
+    private String bookTitle;
+    private double bookPrice;
+
+    public Textbook(String bookTitle, double bookPrice, int TBedition) {
+        super(bookTitle, bookPrice);
+        this.bookPrice = bookPrice;
+        this.bookTitle = bookTitle;
+        edition = TBedition;
+    }
+
+    public int getEdition(){
+        return edition;
+    }
+
+    public String getBookInfo(){
+        return bookTitle + "-" + bookPrice + "-" + edition;
+    }
+
+    public boolean canSubstituteFor(Textbook compare){
+        if(this.bookTitle.equals(compare.bookTitle) && this.edition >= compare.edition){
+            return true;
+        }
+
+        return false;
+    }
+}
 
 class TextbookRun {
 
@@ -39,15 +67,15 @@ class TextbookRun {
     public static void main(String[] args) {
         // uncomment block when ready to test. Select, then Ctrl+/
 
-        // Textbook bio2015 = new Textbook("Biology", 49.75, 2);
-        // Textbook bio2019 = new Textbook("Biology", 39.75, 3);
-        // check(bio2019.getEdition() == 3);
-        // check(bio2019.getBookInfo().equals("Biology-39.75-3"));
-        // check(bio2019.canSubstituteFor(bio2015));
-        // check(!bio2015.canSubstituteFor(bio2019));
-        // Textbook math = new Textbook("Calculus", 45.25, 1);
-        // check(!bio2015.canSubstituteFor(math));
-        // System.out.println("Happy Panda! \uD83D\uDC3C");
+        Textbook bio2015 = new Textbook("Biology", 49.75, 2);
+        Textbook bio2019 = new Textbook("Biology", 39.75, 3);
+        check(bio2019.getEdition() == 3);
+        check(bio2019.getBookInfo().equals("Biology-39.75-3"));
+        check(bio2019.canSubstituteFor(bio2015));
+        check(!bio2015.canSubstituteFor(bio2019));
+        Textbook math = new Textbook("Calculus", 45.25, 1);
+        check(!bio2015.canSubstituteFor(math));
+        System.out.println("Happy Panda! \uD83D\uDC3C");
 
     }
 }
