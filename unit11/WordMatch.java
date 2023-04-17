@@ -10,7 +10,7 @@ public class WordMatch {
     }
 
     public int scoreGuess(String guess) {
-        // TODO part a
+        
         return -1; // replace me!
 
     }
