@@ -21,15 +21,30 @@ class Position {
 
 public class Successors {
     public static Position findPosition(int num, int[][] intArr) {
-        // TODO part a
+        Position p;
 
-        return null; // replace me
+        for(int row = 0; row < intArr.length; row++){
+            for(int col = 0; col < intArr[row].length; col++){
+                p = new Position(row, col);
+                if(intArr[row][col] == num){
+                    return p;
+                }
+            }
+        }
+
+        return null;
     }
 
     public static Position[][] getSuccessorArray(int[][] intArr) {
-        // TODO part b
+        Position[][] p = new Position[intArr.length][intArr[0].length];
 
-        return null; // replace me
+        for(int row = 0; row < intArr.length; row++){
+            for(int col = 0; col < intArr[row].length; col++){
+                p[row][col] = findPosition(intArr[row][col] + 1, intArr);
+            }
+        }
+
+        return p;
     }
 
     public static void check(boolean test) throws AssertionError {
