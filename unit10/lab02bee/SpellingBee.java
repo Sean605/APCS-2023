@@ -9,10 +9,20 @@ public class SpellingBee {
     private char[] letters;
     private char mustUse;
 
-    // TODO construct me!
+    public SpellingBee(char[] letters, char mustUse){
+        this.letters = letters;
+        this.mustUse = mustUse;
+    }
 
     public boolean checkWord(String word) {
-        // TODO implement me!
+        char[] wordInChar = word.toCharArray();
+        int countIncorrect = 0;
+
+        for(int i = 0; i < wordInChar.length; i++){
+            if(wordInChar[i] != mustUse){
+
+            }
+        }
         return true;
     }
 
