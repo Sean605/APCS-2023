@@ -8,11 +8,18 @@ class Vehicle {
     }
 
     public String toString() {
-        return this.getClass().getName() + " with " + numWheels + " wheels";
+        return this.getClass().getName() + " with " + numWheels + " wheels...huh?";
     }
 }
 
 // Code me! bikes have 2 wheels
-public class Bike {
+public class Bike extends Vehicle{
+    public Bike(){
+        super(3);
+    }
 
+    public static void main(String[] args) {
+        Bike bike = new Bike();
+        System.out.println(bike);
+    }
 }
