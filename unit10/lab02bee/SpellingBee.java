@@ -15,15 +15,25 @@ public class SpellingBee {
     }
 
     public boolean checkWord(String word) {
-        char[] wordInChar = word.toCharArray();
-        int countIncorrect = 0;
+        char[] wordInChars = word.toCharArray();
+        int countCorrect = 0;
+        boolean requiredWord = false;
 
-        for(int i = 0; i < wordInChar.length; i++){
-            if(wordInChar[i] != mustUse){
-
+        for(int i = 0; i < wordInChars.length; i++){
+            if(wordInChars[i] == mustUse){
+                requiredWord = true;
+            }
+            for(int j = 0; j < letters.length; j++){
+                if(wordInChars[i] == letters[j]){
+                    countCorrect++;
+                }
             }
         }
-        return true;
+
+        if(countCorrect == wordInChars.length - 1 && requiredWord){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -49,12 +59,13 @@ public class SpellingBee {
     public static void main(String[] args) {
         String[] words = loadFile("words_dropped.txt").split("\n");
         System.out.println("Loaded " + words.length + " words");
-        // TODO solve me!
-        // SpellingBee bee = new SpellingBee("ranglty".toCharArray(), 'y');
 
-        // TODO sort words!
+        SpellingBee bee = new SpellingBee("laucjo".toCharArray(), 'r');
 
-        // TODO what position in the sorted list is the word "search" ?
-
+        for(int i = 0; i < words.length; i++){
+            if(bee.checkWord(words[i])){
+                System.out.println(words[i]);
+            }
+        }
     }
 }
