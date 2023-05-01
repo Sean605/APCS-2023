@@ -1,5 +1,3 @@
-package unit11;
-
 import javax.swing.*;
 import java.awt.Color;
 
@@ -27,11 +25,9 @@ public class DiceRoller{
 }
 
 class NumberRaceGame extends DiceRoller{
-    private int turn = 0;
+    private boolean turn;
     private int numberChosenBlue;
     private int numberChosenRed;
-    private static int BlueScore = 0;
-    private static int RedScore = 0;
     private static JFrame frame = new JFrame();
     private static JPanel bluePanel = new JPanel();
     private static JPanel redPanel = new JPanel();
@@ -52,14 +48,12 @@ class NumberRaceGame extends DiceRoller{
         return numberChosenRed;
     }
 
-    public boolean switchTurns(){
-        turn++;
+    public void switchTurns(){
+        turn = !turn;
+    }
 
-        if(turn % 2 == 0){
-            return false;
-        }
-
-        return true;
+    public boolean getTurn(){
+        return turn;
     }
 
     public void userInterface(){
@@ -80,25 +74,34 @@ class NumberRaceGame extends DiceRoller{
 
     public static void main(String[] args) {
         NumberRaceGame game = new NumberRaceGame(6, 3, 5);
-        game.userInterface();
+        // game.userInterface();
+        int blueScore = 0;
+        int redScore = 0;
 
-        while(BlueScore < 5 || RedScore < 5){
-            if(game.switchTurns()){
+        while(blueScore < 5 || redScore < 5){
+            if(game.getTurn()){
                 if(game.getBlue() == game.getRandom()){
-                    BlueScore++;
+                    blueScore++;
                     bluePanel.setVisible(false);
                     redPanel.setVisible(true);
                 }
             }
             else{
                 if(game.getRed() == game.getRandom()){
-                    RedScore++;
+                    redScore++;
                     bluePanel.setVisible(true);
                     redPanel.setVisible(false);
                 }
             }
 
             game.switchTurns();
+        }
+
+        if(blueScore == 5){
+            System.out.println("Blue wins!");
+        }
+        else{
+            System.out.println("Red wins!");
         }
     }
 }
