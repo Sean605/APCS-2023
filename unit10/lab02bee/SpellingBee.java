@@ -30,6 +30,10 @@ public class SpellingBee {
             }
         }
 
+        if(wordInChars.length < 4){
+            return false;
+        }
+
         if(countCorrect == wordInChars.length - 1 && requiredWord){
             return true;
         }
